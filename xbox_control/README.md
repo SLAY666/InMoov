@@ -1,3 +1,53 @@
+# Installation
+
+1. Installer le driver pour permettre à la manette de communiquer avec le Pi:
+
+   ``` sudo apt-get install xboxdrv ```
+
+2. Installer le module pour lire les boutons de la manette:
+
+   ```git clone https://github.com/FRC4564/Xbox```
+
+3. Installer le module pour lire les boutons de la manette:
+
+   ```git clone https://github.com/FRC4564/Xbox```
+
+# Exécution
+
+1. Ouvrir un terminal dans le fichier du projet et lancer Roscore:
+
+   ```Roscore```
+
+2. Ouvrir un autre terminal et lancer le listener:
+
+   ```python listener.py```
+
+3. Ouvrir un autre terminal et lancer le talker:
+
+   ```python talker.py```
+
+_Si le talker demande sudo pour trouver la manette, débranchez et rebranchez la manette et réexécutez le script_
+
+# Instructions
+
+Lorsque tous les scripts sont en cours d'exécution, les boutons A, X, Y ,B et RB permettent de bouger différents moteurs branchés sur les connecteurs GPIO 0 à 4 dans l'ordre énuméré. La gachette de droite permet de faire bouger les 5 moteurs en même temps. Pour bouger le moteur, il suffit d'appuyer sur l'un de 6 boutons et de bouger le stick analogique gauche vers le haut ou vers le bas. L'angle maximum est 180 degrés vers le haut et 0 vers le bas.
+
+# Problèmes rencontrés
+
+1. Utilisation de plusieurs versions de Python 
+
+Le module Adafruit était seulement disponnible avec Python3 alors que Rospy utilisait Python. Nous devions donc exécuter le script du moteur avec une commande spéciale :  `subprocess.call(["sudo","python3","motor.py"])`
+
+2. Problèmes de connexion de la manette
+
+Le processus ne s'arrête pas par lui-même lorsque nous arrêtions notre scipt. Nous devions donc reconnecter notre manette à chaque exécution du script.
+
+
+
+
+
+
+
 xbox.py
 =======
 
